@@ -1,32 +1,44 @@
 {
     "fileAmount": 1,
     "totalSize": 90.00001525878906,
-    "lastUpdated": "2025-04-04 14:04:52.539273",
+    "lastUpdated": "2025-04-04 14:09:03.568659",
     "files": [
         {
-            "name": "Grasscutter\u6587\u4ef6\u5b58\u6863.zip",
-            "size": "206.88 MB",
-            "uploadTime": "2025-04-04 14:04:51.479417",
-            "totalParts": 3,
-            "currentPart": 3,
+            "name": "test1.mp4",
+            "size": "369.56 MB",
+            "uploadTime": "2025-04-04 14:09:01.622018",
+            "totalParts": 5,
+            "currentPart": 5,
             "parts": [
                 {
                     "part": 1,
-                    "file": "Grasscutter\u6587\u4ef6\u5b58\u6863.zip.part1.enc",
+                    "file": "test1.mp4.part1.enc",
                     "size": "90.00 MB",
-                    "downloadLink": "https://axaxq112.github.io/files/files/Grasscutter\u6587\u4ef6\u5b58\u6863.zip.part1.enc"
+                    "downloadLink": "https://axaxq112.github.io/files/files/test1.mp4.part1.enc"
                 },
                 {
                     "part": 2,
-                    "file": "Grasscutter\u6587\u4ef6\u5b58\u6863.zip.part2.enc",
+                    "file": "test1.mp4.part2.enc",
                     "size": "90.00 MB",
-                    "downloadLink": "https://axaxq112.github.io/files/files/Grasscutter\u6587\u4ef6\u5b58\u6863.zip.part2.enc"
+                    "downloadLink": "https://axaxq112.github.io/files/files/test1.mp4.part2.enc"
                 },
                 {
                     "part": 3,
-                    "file": "Grasscutter\u6587\u4ef6\u5b58\u6863.zip.part3.enc",
-                    "size": "26.88 MB",
-                    "downloadLink": "https://axaxq112.github.io/files/files/Grasscutter\u6587\u4ef6\u5b58\u6863.zip.part3.enc"
+                    "file": "test1.mp4.part3.enc",
+                    "size": "90.00 MB",
+                    "downloadLink": "https://axaxq112.github.io/files/files/test1.mp4.part3.enc"
+                },
+                {
+                    "part": 4,
+                    "file": "test1.mp4.part4.enc",
+                    "size": "90.00 MB",
+                    "downloadLink": "https://axaxq112.github.io/files/files/test1.mp4.part4.enc"
+                },
+                {
+                    "part": 5,
+                    "file": "test1.mp4.part5.enc",
+                    "size": "9.56 MB",
+                    "downloadLink": "https://axaxq112.github.io/files/files/test1.mp4.part5.enc"
                 }
             ]
         }
