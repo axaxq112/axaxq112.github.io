@@ -57,11 +57,12 @@
         let fileUrl = "https://axaxq112.github.io/files/files/";
 
         let getFileInfo = () => {
+            let fileInfo;
             fetch(fileInfoJsonUrl, {
                 method: 'get'
             })
                 .then(function (body) {
-                    let fileInfo = body.text();
+                    fileInfo = body.text();
                 });
 
             console.info(fileInfo);
