@@ -5,7 +5,9 @@ from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
 import hashlib
 
+
 config = {
+    "base_url" : "https://axaxq112.github.io/files/files/",
     "unencrypted_file_dir": "C:/Users/Administrator/Documents/unecrypted_files",  # 未加密文件夹路径
     "encrypted_file_dir": "./files",  # 加密后文件夹路径
     "max_split_chunk_size": 90,  # 分片最大大小 (MB)
@@ -53,12 +55,13 @@ def encrypt_file(file_path, key, max_chunk_size_mb):
             with open(encrypted_path, 'wb') as enc_file:
                 enc_file.write(encrypted_chunk)
 
+            base_url = config["base_url"]
             # 将分片信息记录在 parts 数组中
             file_info["parts"].append({
                 "part": part_num + 1,
                 "file": encrypted_filename,
                 "size": f"{len(encrypted_chunk) / (1024 * 1024):.2f} MB",
-                "downloadLink": f"/files/{encrypted_filename}"  # 下载链接
+                "downloadLink": f"{base_url}{encrypted_filename}"  # 下载链接
             })
 
     return file_info

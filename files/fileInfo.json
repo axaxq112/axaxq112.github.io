@@ -1,12 +1,12 @@
 {
     "fileAmount": 1,
     "totalSize": 90.00001525878906,
-    "lastUpdated": "2025-04-04 13:51:36.825172",
+    "lastUpdated": "2025-04-04 13:57:17.486026",
     "files": [
         {
             "name": "Grasscutter\u6587\u4ef6\u5b58\u6863.zip",
             "size": "206.88 MB",
-            "uploadTime": "2025-04-04 13:51:35.735856",
+            "uploadTime": "2025-04-04 13:57:16.430530",
             "totalParts": 3,
             "currentPart": 3,
             "parts": [
@@ -14,19 +14,19 @@
                     "part": 1,
                     "file": "Grasscutter\u6587\u4ef6\u5b58\u6863.zip.part1.enc",
                     "size": "90.00 MB",
-                    "downloadLink": "/files/Grasscutter\u6587\u4ef6\u5b58\u6863.zip.part1.enc"
+                    "downloadLink": "https://axaxq112.github.io/files/files/Grasscutter\u6587\u4ef6\u5b58\u6863.zip.part1.enc"
                 },
                 {
                     "part": 2,
                     "file": "Grasscutter\u6587\u4ef6\u5b58\u6863.zip.part2.enc",
                     "size": "90.00 MB",
-                    "downloadLink": "/files/Grasscutter\u6587\u4ef6\u5b58\u6863.zip.part2.enc"
+                    "downloadLink": "https://axaxq112.github.io/files/files/Grasscutter\u6587\u4ef6\u5b58\u6863.zip.part2.enc"
                 },
                 {
                     "part": 3,
                     "file": "Grasscutter\u6587\u4ef6\u5b58\u6863.zip.part3.enc",
                     "size": "26.88 MB",
-                    "downloadLink": "/files/Grasscutter\u6587\u4ef6\u5b58\u6863.zip.part3.enc"
+                    "downloadLink": "https://axaxq112.github.io/files/files/Grasscutter\u6587\u4ef6\u5b58\u6863.zip.part3.enc"
                 }
             ]
         }
