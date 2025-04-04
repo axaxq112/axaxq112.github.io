@@ -61,17 +61,20 @@
             fetch(fileInfoJsonUrl, {
                 method: 'get'
             })
-                .then(function (body) {
-                    fileInfo = body.text();
+                .then(function (response) {
+                    if (response.status === 200) {
+                        fileInfo = response.json();
+                    }else{
+                        alert("请求失败");
+                    }
                 });
 
             console.info(fileInfo);
             if (fileInfo == "") {
                 console.info("暂无文件");
             } else {
-                fileInfoJson = JSON.parse(fileInfo);
-                console.info("总文件数:" + fileInfoJson.fileAmount);
-                console.info(fileInfoJson);
+                console.info("总文件数:" + fileInfo.fileAmount);
+
             }
 
         }
