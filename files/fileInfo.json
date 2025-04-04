@@ -1,28 +1,14 @@
 {
-    "fileAmount": 3,
-    "totalSize": 120.5,
-    "lastUpdated": "2025-04-03",
+    "fileAmount": 1,
+    "totalSize": 90.00001525878906,
+    "lastUpdated": "2025-04-04 13:44:34.720596",
     "files": [
         {
-            "name": "file1.zip",
-            "size": "30 MB",
-            "uploadTime": "2025-03-20 14:30",
-            "totalParts": 5,
-            "currentPart": 1
-        },
-        {
-            "name": "file2.mp4",
-            "size": "50 MB",
-            "uploadTime": "2025-03-22 09:15",
-            "totalParts": 10,
-            "currentPart": 7
-        },
-        {
-            "name": "file3.pdf",
-            "size": "40.5 MB",
-            "uploadTime": "2025-03-25 11:45",
-            "totalParts": 4,
-            "currentPart": 4
+            "name": "Grasscutter\u6587\u4ef6\u5b58\u6863.zip",
+            "size": "206.88 MB",
+            "uploadTime": "2025-04-04 13:44:33.704089",
+            "totalParts": 3,
+            "currentPart": 3
         }
     ]
 }

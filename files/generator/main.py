@@ -67,7 +67,7 @@ def generate_file_info_json(file_info_list):
     }
 
     # 写入 JSON 文件
-    with open("fileInfo.json", 'w') as json_file:
+    with open("C:/Users/Administrator/Desktop/githubProjects/axaxq112.github.io/files/fileInfo.json", 'w') as json_file:
         json.dump(data, json_file, indent=4)
 
 # 主程序
