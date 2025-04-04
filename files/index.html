@@ -14,9 +14,11 @@
             font-size: 0.8rem;
             letter-spacing: 1px;
         }
-        h3{
+
+        h3 {
             text-align: center;
         }
+
         caption {
             caption-side: bottom;
             padding: 10px;
@@ -52,6 +54,12 @@
     </style>
     <script>
         let fileInfoJsonUrl = "./fileInfo.json";
+        let fileDir = "./files/";
+
+        let getFileInfo = ()=>{
+            let fileInfo = fetch(fileInfoJsonUrl);
+            console.info(fileInfo);
+        }
     </script>
 </head>
 
@@ -77,11 +85,15 @@
                 <td>22</td>
                 <td><a href="#">下载</a></td>
             </tr>
-            
+
         </tbody>
         <tfoot>
             <tr>
                 <th scope="row" colspan="6" style="text-align: left;">共: 个 总大小: MB</th>
+
+            </tr>
+            <tr>
+                <th scope="row" colspan="6" style="text-align: left;">上次更新时间:</th>
             </tr>
         </tfoot>
     </table>
