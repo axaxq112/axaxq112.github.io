@@ -57,8 +57,8 @@
         let fileUrl = "https://axaxq112.github.io/files/files/";
 
         let getFileInfo = ()=>{
-            let fileInfo = String((fileInfoJsonUrl));
-            console.info(fileInfo);
+            let fileInfo = String(fetch(fileInfoJsonUrl));
+            console.info(fileInfo)
             if (fileInfo == ""){
                 console.info("暂无文件");
             }else{
