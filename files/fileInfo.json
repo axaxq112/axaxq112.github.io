@@ -1,3 +1,28 @@
 {
-    "fileAmount" : 0
+    "fileAmount": 3,
+    "totalSize": 120.5,
+    "lastUpdated": "2025-04-03",
+    "files": [
+        {
+            "name": "file1.zip",
+            "size": "30 MB",
+            "uploadTime": "2025-03-20 14:30",
+            "totalParts": 5,
+            "currentPart": 1
+        },
+        {
+            "name": "file2.mp4",
+            "size": "50 MB",
+            "uploadTime": "2025-03-22 09:15",
+            "totalParts": 10,
+            "currentPart": 7
+        },
+        {
+            "name": "file3.pdf",
+            "size": "40.5 MB",
+            "uploadTime": "2025-03-25 11:45",
+            "totalParts": 4,
+            "currentPart": 4
+        }
+    ]
 }
