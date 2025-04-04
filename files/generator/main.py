@@ -1,26 +1,24 @@
 import os
-import sys
-import datetime
 import json
+import datetime
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
 import hashlib
 
-# 配置项
 config = {
     "unencrypted_file_dir": "C:/Users/Administrator/Documents/unecrypted_files",  # 未加密文件夹路径
-    "encrypted_file_dir": "C:/Users/Administrator/Desktop/githubProjects/axaxq112.github.io/files/files",  # 加密后文件夹路径
+    "encrypted_file_dir": "./files",  # 加密后文件夹路径
     "max_split_chunk_size": 90,  # 分片最大大小 (MB)
 }
 
-# 分片加密的函数
 def encrypt_file(file_path, key, max_chunk_size_mb):
     file_info = {
         "name": os.path.basename(file_path),
         "size": None,
         "uploadTime": str(datetime.datetime.now()),
         "totalParts": 0,
-        "currentPart": 0
+        "currentPart": 0,
+        "parts": []  # 用于存储所有分片的详细信息
     }
 
     # 获取文件大小
@@ -55,9 +53,16 @@ def encrypt_file(file_path, key, max_chunk_size_mb):
             with open(encrypted_path, 'wb') as enc_file:
                 enc_file.write(encrypted_chunk)
 
+            # 将分片信息记录在 parts 数组中
+            file_info["parts"].append({
+                "part": part_num + 1,
+                "file": encrypted_filename,
+                "size": f"{len(encrypted_chunk) / (1024 * 1024):.2f} MB",
+                "downloadLink": f"/files/{encrypted_filename}"  # 下载链接
+            })
+
     return file_info
 
-# 生成 fileInfo.json 文件
 def generate_file_info_json(file_info_list):
     data = {
         "fileAmount": len(file_info_list),
@@ -67,10 +72,9 @@ def generate_file_info_json(file_info_list):
     }
 
     # 写入 JSON 文件
-    with open("C:/Users/Administrator/Desktop/githubProjects/axaxq112.github.io/files/fileInfo.json", 'w') as json_file:
+    with open("../fileInfo.json", 'w') as json_file:
         json.dump(data, json_file, indent=4)
 
-# 主程序
 def main(config):
     key = str(input("AES-256-加密用的Key:"))
 

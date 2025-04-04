@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="cn">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,13 +24,11 @@
             font-weight: bold;
         }
 
-        thead,
-        tfoot {
+        thead, tfoot {
             background-color: rgb(228 240 245);
         }
 
-        th,
-        td {
+        th, td {
             border: 1px solid rgb(160 160 160);
             padding: 8px 10px;
         }
@@ -53,65 +50,66 @@
         }
     </style>
     <script>
-        let fileInfoJsonUrl = "https://axaxq112.github.io/files/fileInfo.json";
-        let fileUrl = "https://axaxq112.github.io/files/files/";
+        let fileInfoJsonUrl = "fileInfo.json";  // 获取 fileInfo.json 的 URL
 
         let getFileInfo = () => {
-            fetch(fileInfoJsonUrl, {
-                method: 'GET',
-            })
-                .then(response => {
-                    if (response.status === 200) {
-                        return response.json(); // 解析为JSON
-                    } else {
-                        throw new Error("请求失败");
-                    }
-                })
+            fetch(fileInfoJsonUrl)
+                .then(response => response.json())
                 .then(fileInfo => {
-                    console.info(fileInfo);
-                    if (fileInfo && fileInfo.fileAmount) {
-                        console.info("总文件数:" + fileInfo.fileAmount);
-                        // 在这里填充文件信息
-                        updateTable(fileInfo); // 你可以在这个函数中操作你的表格
-                    } else {
-                        console.info("暂无文件");
+                    if (!fileInfo || fileInfo.fileAmount === 0) {
+                        alert("没有文件信息");
+                        return;
                     }
+
+                    let tableBody = document.querySelector("table tbody");
+                    fileInfo.files.forEach(file => {
+                        let row = document.createElement("tr");
+
+                        // 文件名
+                        let nameCell = document.createElement("td");
+                        nameCell.textContent = file.name;
+                        row.appendChild(nameCell);
+
+                        // 文件大小
+                        let sizeCell = document.createElement("td");
+                        sizeCell.textContent = file.size;
+                        row.appendChild(sizeCell);
+
+                        // 上传时间
+                        let timeCell = document.createElement("td");
+                        timeCell.textContent = file.uploadTime;
+                        row.appendChild(timeCell);
+
+                        // 分片信息
+                        let partsCell = document.createElement("td");
+                        partsCell.textContent = file.totalParts;
+                        row.appendChild(partsCell);
+
+                        // 当前分片
+                        let currentPartCell = document.createElement("td");
+                        currentPartCell.textContent = file.currentPart;
+                        row.appendChild(currentPartCell);
+
+                        // 下载链接
+                        let downloadCell = document.createElement("td");
+                        file.parts.forEach(part => {
+                            let downloadLink = document.createElement("a");
+                            downloadLink.href = part.downloadLink;
+                            downloadLink.textContent = `下载分片${part.part} (${part.size})`;
+                            downloadCell.appendChild(downloadLink);
+                            downloadCell.appendChild(document.createElement("br"));
+                        });
+                        row.appendChild(downloadCell);
+
+                        tableBody.appendChild(row);
+                    });
                 })
-                .catch(error => {
-                    console.error("请求或数据处理出错:", error);
-                });
+                .catch(() => alert("获取文件信息失败"));
         };
 
-        // 更新表格内容
-        let updateTable = (fileInfo) => {
-            // 假设 fileInfo 是数组类型
-            let tbody = document.querySelector("tbody");
-            tbody.innerHTML = ''; // 清空现有表格内容
-
-            fileInfo.files.forEach(file => {
-                let tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <th scope="row">${file.name}</th>
-                    <td>${file.size}</td>
-                    <td>${file.uploadTime}</td>
-                    <td>${file.totalParts}</td>
-                    <td>${file.currentPart}</td>
-                    <td><a href="${fileUrl + file.name}" target="_blank">下载</a></td>
-                `;
-                tbody.appendChild(tr);
-            });
-
-            // 更新页脚
-            let footer = document.querySelector("tfoot");
-            footer.querySelector("th").textContent = `共: ${fileInfo.fileAmount} 个 总大小: ${fileInfo.totalSize} MB`;
-            footer.querySelector("td").textContent = `上次更新时间: ${fileInfo.lastUpdated}`;
-        };
-
-        // 页面加载时调用获取文件信息
         window.onload = getFileInfo;
     </script>
 </head>
-
 <body>
     <h3>文件备份</h3>
     <table>
@@ -120,23 +118,22 @@
                 <th scope="col">文件名</th>
                 <th scope="col">文件大小</th>
                 <th scope="col">上传时间</th>
-                <th scope="col">总分片号</th>
-                <th scope="col">当前分片号</th>
+                <th scope="col">总分片数</th>
+                <th scope="col">当前分片</th>
                 <th scope="col">操作</th>
             </tr>
         </thead>
         <tbody>
-            <!-- 文件信息将动态插入到这里 -->
+            <!-- 文件信息将被动态填充 -->
         </tbody>
         <tfoot>
             <tr>
-                <th scope="row" colspan="6" style="text-align: left;">共: 0 个 总大小: 0 MB</th>
+                <th scope="row" colspan="6" style="text-align: left;">共: 个 总大小: MB</th>
             </tr>
             <tr>
-                <th scope="row" colspan="6" style="text-align: left;">上次更新时间: 2023-01-01</th>
+                <th scope="row" colspan="6" style="text-align: left;">上次更新时间:</th>
             </tr>
         </tfoot>
     </table>
 </body>
-
 </html>
