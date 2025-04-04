@@ -57,27 +57,59 @@
         let fileUrl = "https://axaxq112.github.io/files/files/";
 
         let getFileInfo = () => {
-            let fileInfo;
             fetch(fileInfoJsonUrl, {
-                method: 'get'
+                method: 'GET',
             })
-                .then(function (response) {
+                .then(response => {
                     if (response.status === 200) {
-                        fileInfo = response.json();
-                    }else{
-                        alert("请求失败");
+                        return response.json(); // 解析为JSON
+                    } else {
+                        throw new Error("请求失败");
                     }
+                })
+                .then(fileInfo => {
+                    console.info(fileInfo);
+                    if (fileInfo && fileInfo.fileAmount) {
+                        console.info("总文件数:" + fileInfo.fileAmount);
+                        // 在这里填充文件信息
+                        updateTable(fileInfo); // 你可以在这个函数中操作你的表格
+                    } else {
+                        console.info("暂无文件");
+                    }
+                })
+                .catch(error => {
+                    console.error("请求或数据处理出错:", error);
+                    alert("请求失败");
                 });
+        };
 
-            console.info(fileInfo);
-            if (fileInfo == "") {
-                console.info("暂无文件");
-            } else {
-                console.info("总文件数:" + fileInfo.fileAmount);
+        // 更新表格内容
+        let updateTable = (fileInfo) => {
+            // 假设 fileInfo 是数组类型
+            let tbody = document.querySelector("tbody");
+            tbody.innerHTML = ''; // 清空现有表格内容
 
-            }
+            fileInfo.files.forEach(file => {
+                let tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <th scope="row">${file.name}</th>
+                    <td>${file.size}</td>
+                    <td>${file.uploadTime}</td>
+                    <td>${file.totalParts}</td>
+                    <td>${file.currentPart}</td>
+                    <td><a href="${fileUrl + file.name}" target="_blank">下载</a></td>
+                `;
+                tbody.appendChild(tr);
+            });
 
-        }
+            // 更新页脚
+            let footer = document.querySelector("tfoot");
+            footer.querySelector("th").textContent = `共: ${fileInfo.fileAmount} 个 总大小: ${fileInfo.totalSize} MB`;
+            footer.querySelector("td").textContent = `上次更新时间: ${fileInfo.lastUpdated}`;
+        };
+
+        // 页面加载时调用获取文件信息
+        window.onload = getFileInfo;
     </script>
 </head>
 
@@ -95,23 +127,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">Chris</th>
-                <td>HTML tables</td>
-                <td>22</td>
-                <td>22</td>
-                <td>22</td>
-                <td><a href="#">下载</a></td>
-            </tr>
-
+            <!-- 文件信息将动态插入到这里 -->
         </tbody>
         <tfoot>
             <tr>
-                <th scope="row" colspan="6" style="text-align: left;">共: 个 总大小: MB</th>
-
+                <th scope="row" colspan="6" style="text-align: left;">共: 0 个 总大小: 0 MB</th>
             </tr>
             <tr>
-                <th scope="row" colspan="6" style="text-align: left;">上次更新时间:</th>
+                <th scope="row" colspan="6" style="text-align: left;">上次更新时间: 2023-01-01</th>
             </tr>
         </tfoot>
     </table>
