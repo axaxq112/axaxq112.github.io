@@ -9,7 +9,7 @@ import hashlib
 config = {
     "base_url" : "https://axaxq112.github.io/files/files/",
     "unencrypted_file_dir": "C:/Users/Administrator/Documents/unecrypted_files",  # 未加密文件夹路径
-    "encrypted_file_dir": "./files",  # 加密后文件夹路径
+    "encrypted_file_dir": "../files",  # 加密后文件夹路径
     "max_split_chunk_size": 90,  # 分片最大大小 (MB)
 }
 
